@@ -35,7 +35,16 @@ autoload -U compinit && compinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Keybindings
-bindkey '^f' autosuggest-accept # Accepts the command suggestion with Control-f
+bindkey -r '^F'
+bindkey -r '^R'
+
+bindkey '^F' history-incremental-search-backward # Accepts the command suggestion with Control-f
+bindkey '^R' autosuggest-accept
+
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "^H" backward-kill-word
+
 
 # History
 HISTSIZE=1000
