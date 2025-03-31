@@ -16,7 +16,7 @@ exec --no-startup-id xset r rate 280 35
 
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
-exec_always feh --bg-scale ~/.config/backgrounds/nice-blue-background.png
+exec_always --no-startup-id feh --bg-scale ~/.config/backgrounds/nice-blue-background.png
 bindsym $mod+space exec rofi -show combi
 
 # Font for window titles. Will also be used by the bar unless a different font
