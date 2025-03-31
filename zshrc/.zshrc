@@ -63,3 +63,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Aliases
 alias ls='ls --color'
+
+# If i3 is running, setup my monitor
+if pgrep -x "i3" > /dev/null; then
+    xrandr --output HDMI-1 --auto --right-of DP-3
+fi
