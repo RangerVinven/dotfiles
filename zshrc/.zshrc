@@ -68,3 +68,5 @@ alias ls='ls --color'
 if pgrep -x "i3" > /dev/null; then
     xrandr --output HDMI-1 --auto --left-of DP-3
 fi
+
+unset SSH_ASKPASS
