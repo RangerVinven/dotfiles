@@ -5,6 +5,15 @@ vim.cmd("set shiftwidth=4")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Tells neovim to not paint a background (allows for transparency)
+vim.cmd [[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
+]]
+
+
 -- Setup general keymaps
 vim.g.mapleader = " "
 vim.keymap.set('i', 'jk', '<Esc>') -- Makes "jk" escape to normal mode
@@ -126,7 +135,9 @@ vim.keymap.set("n", "<leader>h8", function() require("harpoon.ui").nav_file(8) e
 vim.keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end, { desc = "Go to Harpoon file 9" })
 
 -- Setup the colorscheme
-require("catppuccin").setup()
+require("catppuccin").setup({
+    transparent_background = true
+})
 vim.cmd.colorscheme "catppuccin"
 
 -- Setup telescope

@@ -3,12 +3,15 @@
 program = "/bin/zsh"
 args = ["--login"]
 
+[window]
+opacity = 0.95
+
 [font]
 normal       = { family = "Hack Nerd Font", style = "Regular" }
 bold         = { family = "Hack Nerd Font", style = "Bold" }
 italic       = { family = "Hack Nerd Font", style = "Italic" }
 bold_italic  = { family = "Hack Nerd Font", style = "Bold Italic" }
-size         = 12.0
+size         = 14
 
 [[keyboard.bindings]]
 key = "Left"
@@ -29,4 +32,3 @@ chars = "\u001b[1;5A"
 key = "Down"
 mods = "Control"
 chars = "\u001b[1;5B"
-
