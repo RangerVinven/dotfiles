@@ -13,6 +13,14 @@ vim.cmd [[
   hi SignColumn guibg=NONE ctermbg=NONE
 ]]
 
+-- Has neovim use the system clipboard
+vim.api.nvim_set_option("clipboard","unnamed")
+
+-- Puts the cursor in the middle when doing Control-d, Control-u or using n/N to move when searching
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- Setup general keymaps
 vim.g.mapleader = " "

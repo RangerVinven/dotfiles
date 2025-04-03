@@ -32,3 +32,22 @@ chars = "\u001b[1;5A"
 key = "Down"
 mods = "Control"
 chars = "\u001b[1;5B"
+
+
+# Sets copy-paste to control-c and control-v
+# and has control-shift-c do the keyboard interrupt
+[[keyboard.bindings]]
+key = "C"
+mods = "Control"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+chars = "\u0003"  # sends ASCII code 3 (Ctrl+C / SIGINT)
+
