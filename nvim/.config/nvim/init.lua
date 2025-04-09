@@ -114,7 +114,8 @@ local plugins = {
     },
     {
         "ThePrimeagen/harpoon",
-    }
+    },
+    { "mfussenegger/nvim-jdtls"}
 
 }
 local opts = {}
@@ -196,6 +197,42 @@ cmp.setup({
         { name = "buffer" },
         { name = "path" },
     }),
+})
+
+-- Java LSP Setup
+local jdtls = require('jdtls')
+
+-- Only start jdtls when editing Java files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function()
+    local home = os.getenv("HOME")
+    local root_markers = {".git", "mvnw", "gradlew", "pom.xml", "build.gradle"}
+    local root_dir = require('jdtls.setup').find_root(root_markers)
+
+    if root_dir == nil then
+      return
+    end
+
+    local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+    local workspace_dir = home .. "/.local/share/eclipse/" .. project_name
+
+    local config = {
+      cmd = {
+        "jdtls",
+        "-data", workspace_dir
+      },
+      root_dir = root_dir,
+      settings = {
+        java = {}
+      },
+      init_options = {
+        bundles = {}
+      }
+    }
+
+    jdtls.start_or_attach(config)
+  end
 })
 
 -- LSP Keymaps
