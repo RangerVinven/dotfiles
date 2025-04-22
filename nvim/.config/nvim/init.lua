@@ -236,7 +236,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- LSP Keymaps
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' }) -- Goes to where a function or variable is defined
+vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = 'Go to definition' }) -- Goes to where a function or variable is defined
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' }) -- Gives the documentation for a function
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' }) -- Renames a function or variable throughout the project
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' }) -- Triggers automatic fixes, applying imports, etc

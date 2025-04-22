@@ -4,14 +4,14 @@ program = "/bin/zsh"
 args = ["--login"]
 
 [window]
-opacity = 0.95
+opacity = 0.85
 
 [font]
 normal       = { family = "Hack Nerd Font", style = "Regular" }
 bold         = { family = "Hack Nerd Font", style = "Bold" }
 italic       = { family = "Hack Nerd Font", style = "Italic" }
 bold_italic  = { family = "Hack Nerd Font", style = "Bold Italic" }
-size         = 14
+size         = 16
 
 [[keyboard.bindings]]
 key = "Left"
