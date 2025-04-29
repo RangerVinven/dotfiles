@@ -4,7 +4,7 @@ program = "/bin/zsh"
 args = ["--login"]
 
 [window]
-opacity = 0.85
+opacity = 0.95
 
 [font]
 normal       = { family = "Hack Nerd Font", style = "Regular" }

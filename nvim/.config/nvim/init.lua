@@ -4,6 +4,7 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.clipboard:append { 'unnamedplus' }
 
 -- Tells neovim to not paint a background (allows for transparency)
 vim.cmd [[
@@ -240,3 +241,9 @@ vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = 'Go to defini
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' }) -- Gives the documentation for a function
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' }) -- Renames a function or variable throughout the project
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' }) -- Triggers automatic fixes, applying imports, etc
+
+
+-- Remaps to use the system clipboard
+vim.keymap.set('n', 'y', '"+y')
+vim.keymap.set('v', 'y', '"+y')
+vim.keymap.set('n', 'yy', '"+yy')
