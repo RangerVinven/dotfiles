@@ -168,7 +168,7 @@ config.setup({
 -- Mason Setup (LSP installer)
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "ts_ls" },
+    ensure_installed = { "lua_ls", "pyright", "ts_ls", "gopls" },
     automatic_installation = true,
 })
 
@@ -177,6 +177,7 @@ local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.ts_ls.setup({})
+lspconfig.gopls.setup({})
 
 -- nvim-cmp (Completion) Setup
 local cmp = require("cmp")
@@ -242,8 +243,18 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' }) --
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' }) -- Renames a function or variable throughout the project
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' }) -- Triggers automatic fixes, applying imports, etc
 
+vim.keymap.set('n', '<leader>ge', vim.diagnostic.open_float, { desc = 'Show error message' })
+vim.keymap.set('n', '<leader>ne', vim.diagnostic.goto_next, { desc = 'Show next error message' })
+vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = 'Show previous error message' })
+
 
 -- Remaps to use the system clipboard
-vim.keymap.set('n', 'y', '"+y')
-vim.keymap.set('v', 'y', '"+y')
-vim.keymap.set('n', 'yy', '"+yy')
+-- Always yank, paste, delete with system clipboard
+-- vim.keymap.set('n', 'y', '"+y')
+-- vim.keymap.set('v', 'y', '"+y')
+-- vim.keymap.set('n', 'yy', '"+yy')
+-- vim.keymap.set('n', 'p', '"+p')
+-- vim.keymap.set('n', 'P', '"+P')
+-- vim.keymap.set('n', 'd', '"+d')
+-- vim.keymap.set('v', 'd', '"+d')
+
