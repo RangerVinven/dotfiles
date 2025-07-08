@@ -168,7 +168,7 @@ config.setup({
 -- Mason Setup (LSP installer)
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "ts_ls", "gopls" },
+    ensure_installed = { "lua_ls", "pyright", "ts_ls", "gopls", "tailwindcss" },
     automatic_installation = true,
 })
 
@@ -178,6 +178,7 @@ lspconfig.lua_ls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.ts_ls.setup({})
 lspconfig.gopls.setup({})
+lspconfig.tailwindcss.setup({})
 
 -- nvim-cmp (Completion) Setup
 local cmp = require("cmp")
