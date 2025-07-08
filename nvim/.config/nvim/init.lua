@@ -97,10 +97,10 @@ local plugins = {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
-            "hrsh7th/cmp-nvim-lsp",    -- LSP source for nvim-cmp
-            "hrsh7th/cmp-buffer",      -- buffer words
-            "hrsh7th/cmp-path",        -- file paths
-            "L3MON4D3/LuaSnip",        -- snippet engine
+            "hrsh7th/cmp-nvim-lsp",   -- LSP source for nvim-cmp
+            "hrsh7th/cmp-buffer",     -- buffer words
+            "hrsh7th/cmp-path",       -- file paths
+            "L3MON4D3/LuaSnip",       -- snippet engine
             "saadparwaiz1/cmp_luasnip"  -- luasnip source
         },
     },
@@ -130,7 +130,7 @@ vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
 -- Setup harpoon
 require("harpoon").setup()
-vim.keymap.set("n", "<leader>ha", require("harpoon.mark").add_file, { desc = "Add file to Harpoon" }) -- Marks a file 
+vim.keymap.set("n", "<leader>ha", require("harpoon.mark").add_file, { desc = "Add file to Harpoon" }) -- Marks a file
 vim.keymap.set("n", "<leader>hs", require("harpoon.ui").toggle_quick_menu, { desc = "Toggle Harpoon menu" }) -- Lists the marked files
 vim.keymap.set("n", "<leader>hr", function() require("harpoon.mark").rm_file() end, { desc = "Unmark file from Harpoon" })
 
@@ -150,6 +150,12 @@ require("catppuccin").setup({
 })
 vim.cmd.colorscheme "catppuccin"
 
+require('telescope').setup({
+  defaults = {
+    file_ignore_patterns = { "node_modules", ".git" },
+  },
+})
+--
 -- Setup telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
@@ -158,7 +164,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
 -- Setup treesitter
 local config = require("nvim-treesitter.configs")
 config.setup({
-    ensure_installed = {"lua", "javascript", "python", "java", "typescript"},
+    ensure_installed = {"lua", "javascript", "python", "java", "typescript", "tsx"}, -- Added tsx
     highlight = { enable = true },
     indent = { enable = true }
 })
@@ -168,7 +174,7 @@ config.setup({
 -- Mason Setup (LSP installer)
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "ts_ls", "gopls", "tailwindcss" },
+    ensure_installed = { "lua_ls", "pyright", "ts_ls", "gopls", "tailwindcss", "html", "emmet_ls" }, 
     automatic_installation = true,
 })
 
@@ -176,9 +182,14 @@ require("mason-lspconfig").setup({
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({})
 lspconfig.pyright.setup({})
-lspconfig.ts_ls.setup({})
+lspconfig.ts_ls.setup({}) 
 lspconfig.gopls.setup({})
 lspconfig.tailwindcss.setup({})
+lspconfig.html.setup({}) 
+lspconfig.emmet_ls.setup({ 
+    filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+})
+
 
 -- nvim-cmp (Completion) Setup
 local cmp = require("cmp")
@@ -258,4 +269,3 @@ vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = 'Show previ
 -- vim.keymap.set('n', 'P', '"+P')
 -- vim.keymap.set('n', 'd', '"+d')
 -- vim.keymap.set('v', 'd', '"+d')
-
