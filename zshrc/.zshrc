@@ -78,6 +78,7 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="$PATH:/usr/local/bin/BurpSuiteCommunity"
 export PATH="$HOME/goroot/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="/snap/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
